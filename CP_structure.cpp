@@ -256,9 +256,9 @@ int main()
     init
     {
         count++;
-        ll i, j, k, x, y, z, p , q , r, m , n , l , r,  l1, l2, r1, r2, ans , flag , sum ;
-        ll mini = lmax, maxi = -1, piv , piv1 , piv2 , rem , now , mid;
-        //ll  dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
+        ll i, j, k, x, y, z, p, q, m, n, l, r,  l1, l2, r1, r2, ans, flag, sum ;
+        ll mini = lmax, maxi = -1, piv, piv1, piv2, rem, now, mid;
+        ll  dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
 
         string s, s1 = "", s2 = "";
         //string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "", pivs = "", rems = "";
@@ -274,13 +274,14 @@ int main()
         // vector<vec> vdarr(n, vec(10, 0));
 
 
+
         pair<ll, ll> pr, pr1, pr2;
         set<ll> st, st1, st2, ms, ldiff, rdiff;
         priority_queue<ll> pq, pq1, pq2;
         stack<ll> stck, stck1, stck2;
         map<int, ll> mp, mp1, mp2;
         queue<ll> vq[10],vq1,vq2;
-        
+
 
         // Point pa,pb,pt[n];
         // Node pa,pb,pt[n];
@@ -312,7 +313,7 @@ int main()
         l=p=maxi;
 
         // ll current_min=n+1, upper_limit=n+1;
-        
+
         i=piv+1;
         while(i<n)
         {
@@ -332,11 +333,11 @@ int main()
             i--;
         }
 
-        
 
-        
 
-    
+
+
+
         // }
         //ans=(((((2|4)|12)|1)));
 
