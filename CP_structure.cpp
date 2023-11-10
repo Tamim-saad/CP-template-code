@@ -291,7 +291,12 @@ int main()
         piv=0;
         flag=0;
         sum=0;
-        
+
+
+        // cout<<LONG_MAX<<endl;
+        //  cout<<(n|(n>>1))<<endl;
+        //  return 0;
+
 
         forr(i,0,n)
         {
