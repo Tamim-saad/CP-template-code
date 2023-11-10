@@ -256,21 +256,23 @@ int main()
     init
     {
         count++;
-        ll i, j, x, y, d, p=-1, q=-1, g, m = 0, n = 0, rest = 0, k, ans = 0, flag = 0, sum = 0, bef_even_pos = 0, bef_odd_pos = 0;
-        ll mini = lmax, maxi = -1, dif = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
-        ll piv=0, piv1 = 21, piv2 = 21, rem = 0, fix = 0, flex = 0, change = 0, prev = -1, l = 0, r = 0, l1, l2, r1, r2, lval, rval, now = 0, mid;
+        ll i, j, k, x, y, z, p , q , r, m , n , l , r,  l1, l2, r1, r2, ans , flag , sum ;
+        ll mini = lmax, maxi = -1, piv , piv1 , piv2 , rem , now , mid;
+        //ll  dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
 
-        string s, s1 = "", s2 = "", res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "";
-        string pivs = "", rems = "";
+        string s, s1 = "", s2 = "";
+        //string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "", pivs = "", rems = "";
 
         cin >> n;
         //n = s.size;
 
-        ll arr[n], number[n], cost[n], forsum[n], backsum[n];
-        vector<vec> vdarr(n, vec(10, 0));
+        ll arr[n];
+        // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
         vector<pair<ll, ll>> vpr;
+        // vector<vec> vdarr(n, vec(10, 0));
+
 
         pair<ll, ll> pr, pr1, pr2;
         set<ll> st, st1, st2, ms, ldiff, rdiff;
@@ -284,6 +286,12 @@ int main()
         // Node pa,pb,pt[n];
 
         // cout<<"-----------------yess"<<endl;
+
+        ans=0;
+        piv=0;
+        flag=0;
+        sum=0;
+        
 
         forr(i,0,n)
         {
