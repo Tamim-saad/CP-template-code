@@ -146,6 +146,27 @@ ll gcd(ll arr[], ll n)
     return ans;
 }
 
+ll x_power_y_by_MOD(ll a, ll b,ll MOD)
+{
+    if (b == 1)
+        return a % MOD;
+    else if (b == 0)
+        return 1;
+    else
+    {
+        if (b % 2 == 0)
+        {
+            ll x = x_power_y_by_MOD(a, b / 2, MOD);
+            return (x * x) % MOD;
+        }
+        else
+        {
+            ll x = x_power_y_by_MOD(a, b / 2, MOD);
+            return ((x * x) % MOD * a) % MOD;
+        }
+    }
+}
+
 // string binary = bitset<8>(n).to_string();
 // unsigned long decimal =bitset<8>(binary).to_ulong();
 
