@@ -146,25 +146,17 @@ ll gcd(ll arr[], ll n)
     return ans;
 }
 
-ll x_power_y_by_MOD(ll a, ll b,ll MOD)
+const int mod = 1e9+7;
+ll modular_exponent(ll base, ll pow)
 {
-    if (b == 1)
-        return a % MOD;
-    else if (b == 0)
-        return 1;
+    if (pow == 0)  return 1;
+
+    ll x = modular_exponent(base, pow / 2);
+
+    if (pow % 2 == 0)
+        return (x * x) % mod;
     else
-    {
-        if (b % 2 == 0)
-        {
-            ll x = x_power_y_by_MOD(a, b / 2, MOD);
-            return (x * x) % MOD;
-        }
-        else
-        {
-            ll x = x_power_y_by_MOD(a, b / 2, MOD);
-            return ((x * x) % MOD * a) % MOD;
-        }
-    }
+        return ((x * x) % mod * base) % mod;
 }
 
 // string binary = bitset<8>(n).to_string();
