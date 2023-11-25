@@ -62,21 +62,22 @@ struct Point
 
 public:
     Point() {}
-    Point(ll _x, ll _y) : x(_x), y(_y) {}
-    Point operator+(const Point &p) const
-    {
-        return Point(x + p.x, y + p.y);
-    }
-    Point operator-(const Point &p) const
-    {
-        return Point(x - p.x, y - p.y);
-    }
-    Point operator/(const ld k) const
-    {
-        return Point(x / k, y / k);
-    }
-};
+    Point(ld _x, ld _y) : x(_x), y(_y) {}
+    Point operator+(const Point &p) const { return Point(x + p.x, y + p.y); }
+    Point operator-(const Point &p) const { return Point(x - p.x, y - p.y); }
+    long double operator*(const Point &p) const { return (x * p.y- y * p.x); }
+    
+    void operator +=(const long double k) { x+= k; y+= k; }
+    void operator -=(const long double k) { x-= k; y-= k; }
+    void operator *=(const long double k) { x*= k; y*= k; }
+    void operator /=(const long double k) { x/= k; y/= k; }
 
+    long double cross(const Point &b, const Point &c) const
+    {
+        return (b-*this) * (c-*this); 
+    }
+
+};
 pair<ld, ld> getCrossPoint(ld a1, ld b1, ld c1, ld a2, ld b2, ld c2)
 {
     ld x, y;
