@@ -75,14 +75,14 @@ public:
     ld cross(const Point &b, const Point &c) const { return (b-*this) * (c-*this); }
     ld len(const Point &a, const Point &b) const { return sqrtl((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
 
-    pair<ld, ld> getCrossPoint(const Point &a, const Point &b, const Point &c, const Point &d)
+    pair<ld, ld> getCrossPoint(const Point &b, const Point &c, const Point &d)
     {
-        ld m1=(b.y - a.y) / (b.x - a.x);
+        ld m1=(b.y - y) / (b.x - x);
         ld m2=(d.y - c.y) / (d.x - c.x);
 
         ld a1=m1;
         ld b1=-1;
-        ld c1=a.y-m1*a.x;
+        ld c1=y-m1*x;
         ld a2=m2;
         ld b2=-1;
         ld c2=c.y-m2*c.x;
