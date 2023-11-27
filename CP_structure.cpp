@@ -18,6 +18,7 @@ using namespace std;
 #define con continue
 #define bre break
 #define pl "  "
+#define pll " --- "
 #define size size()
 #define mpr make_pair
 #define vec vector<ll>
@@ -59,42 +60,40 @@ using namespace std;
 struct Point
 {
     ld x, y;
-
 public:
     Point() {}
     Point(ld _x, ld _y) : x(_x), y(_y) {}
     Point operator+(const Point &p) const { return Point(x + p.x, y + p.y); }
     Point operator-(const Point &p) const { return Point(x - p.x, y - p.y); }
-    long double operator*(const Point &p) const { return (x * p.y- y * p.x); }
+    ld operator*(const Point &p) const { return (x * p.y- y * p.x); }
     
-    void operator +=(const long double k) { x+= k; y+= k; }
-    void operator -=(const long double k) { x-= k; y-= k; }
-    void operator *=(const long double k) { x*= k; y*= k; }
-    void operator /=(const long double k) { x/= k; y/= k; }
+    void operator +=(const ld k) { x+= k; y+= k; }
+    void operator -=(const ld k) { x-= k; y-= k; }
+    void operator *=(const ld k) { x*= k; y*= k; }
+    void operator /=(const ld k) { x/= k; y/= k; }
 
-    long double cross(const Point &b, const Point &c) const
+    ld cross(const Point &b, const Point &c) const { return (b-*this) * (c-*this); }
+    ld len(const Point &a, const Point &b) const { return sqrtl((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y)); }
+
+    pair<ld, ld> getCrossPoint(const Point &a, const Point &b, const Point &c, const Point &d)
     {
-        return (b-*this) * (c-*this); 
+        ld m1=(b.y - a.y) / (b.x - a.x);
+        ld m2=(d.y - c.y) / (d.x - c.x);
+
+        ld a1=m1;
+        ld b1=-1;
+        ld c1=a.y-m1*a.x;
+        ld a2=m2;
+        ld b2=-1;
+        ld c2=c.y-m2*c.x;
+
+        ld x = (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
+        ld y = (c1 * a2 - c2 * a1) / (a1 * b2 - a2 * b1);
+        return make_pair(x, y);
     }
-
 };
-pair<ld, ld> getCrossPoint(ld a1, ld b1, ld c1, ld a2, ld b2, ld c2)
-{
-    ld x, y;
-    x = (b1 * c2 - b2 * c1) / (a1 * b2 - a2 * b1);
-    y = (c1 * a2 - c2 * a1) / (a1 * b2 - a2 * b1);
-    return make_pair(x, y);
-}
 
-ld len(Point a, Point b)
-{
-    return sqrtl((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
-}
-
-ld area(Point a, Point b, Point c)
-{
-    return abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0);
-}
+//ld area(Point a, Point b, Point c) { return abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0); }
 
 bool validParenthesisCheck(string s)
 {
