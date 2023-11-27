@@ -95,6 +95,27 @@ public:
 
 //ld area(Point a, Point b, Point c) { return abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2.0); }
 
+int getSign(ld x)
+{
+    if(x<0) return -1;
+    if(x==0) return 0;
+    return 1;
+}
+bool sameLineTwoSegmentIntersectionCheck(ld a,ld b,ld c,ld d)
+{
+    if(a>b) swap(a,b);
+    if(c>d) swap(c,d);
+    return max(a,c)<=min(b,d);
+}
+bool anyLineTwoSegmentIntersectionCheck(const Point &a, const Point &b, const Point &c, const Point &d)
+{
+    if(a.cross(c,d)==0 && b.cross(c,d)==0)
+        return (sameLineTwoSegmentIntersectionCheck(a.x,b.x,c.x,d.x) && sameLineTwoSegmentIntersectionCheck(a.y,b.y,c.y,d.y));
+    else
+        return (getSign(a.cross(c,d))!=getSign(b.cross(c,d))  &&  getSign(c.cross(a,b))!=getSign(d.cross(a,b)));
+}
+
+
 bool validParenthesisCheck(string s)
 {
     stack<char> st;
