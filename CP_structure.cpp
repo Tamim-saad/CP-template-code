@@ -27,35 +27,35 @@ using namespace std;
 #define forr(i, a, b) for (ll i = a; i < b; i++)
 #define forrev(i, a, b) for (ll i = a; i >= b; i--)
 
-// #define v.all v.begin(),v.end()
-#define printarr(arr, in, n)    \
-    cout << ed;                 \
-    for (ll i = in; i < n; i++) \
-        cout << arr[i] << " ";  \
-    cout << ed;
-#define print(arr, n)          \
-    cout << ed;                \
-    for (ll i = 0; i < n; i++) \
-        cout << arr[i] << " "; \
-    cout << ed;
-#define printyn(flag)        \
+
+// #define v.all v.begin(), v.end()
+
+#define printArrWhole(arr, n) \
+    for (ll i = 0; i < n; i++)
+
+#define printArrLim(arr, in, n)  \
+    for (ll i = in; i <= n; i++) \
+        cout << arr[i] << " ";
+
+#define printYesNo(flag) \
     if (flag == 0)       \
         cout << "NO\n";  \
     else                 \
-        cout << "YES\n"; \
+        cout << "YES\n";
 
-#define printvc(vc)       \
-    cout << ed;           \
-    for (auto x : vc)     \
-        cout << x << " "; \
-    cout << ed;
-// #define printvc(vc)  for(auto x:vc)cout<<x<<".";
-// #define printvc(vc,in,n)  cout<<ed;for(ll i=in;i<n;i++)cout<<arr[i]<<" ";cout<<ed;
+#define printvcWhole(vc) \
+    for (auto x : vc)    \
+        cout << x << " ";
 
-#define srt(arr, n) sort(ara, ara + n);
-#define srtvc(v) sort(v.begin(), v.end());
+#define printvcLim(vc, in, n)    \
+    for (ll i = in; i <= n; i++) \
+        cout << vc[i] << " ";
+
+#define sortArr(arr, n) sort(arr, arr + n);
+#define sortvc(v) sort(v.begin(), v.end());
 #define rev(v) reverse(v.begin(), v.end());
-// #define find(v,x) find(v.begin(), v.end(),x);
+#define find(v, x) find(v.begin(), v.end(), x);
+
 
 struct Point
 {
