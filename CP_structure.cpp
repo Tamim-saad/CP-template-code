@@ -30,26 +30,31 @@ using namespace std;
 
 // #define v.all v.begin(), v.end()
 
+
 #define printArrWhole(arr, n) \
     for (ll i = 0; i < n; i++)
 
 #define printArrLim(arr, in, n)  \
     for (ll i = in; i <= n; i++) \
-        cout << arr[i] << " ";
+        cout << arr[i] << " ";   \
+    cout << endl;
 
 #define printYesNo(flag) \
     if (flag == 0)       \
-        cout << "NO\n";  \
+        cout << "NO";    \
     else                 \
-        cout << "YES\n";
+        cout << "YES";   \
+    cout << endl;
 
-#define printvcWhole(vc) \
-    for (auto x : vc)    \
-        cout << x << " ";
+#define printvcWhole(vc)  \
+    for (auto x : vc)     \
+        cout << x << " "; \
+    cout << endl;
 
 #define printvcLim(vc, in, n)    \
     for (ll i = in; i <= n; i++) \
-        cout << vc[i] << " ";
+        cout << vc[i] << " ";    \
+    cout << endl;
 
 #define sortArr(arr, n) sort(arr, arr + n);
 #define sortvc(v) sort(v.begin(), v.end());
