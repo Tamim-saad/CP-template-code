@@ -120,6 +120,30 @@ bool anyLineTwoSegmentIntersectionCheck(const Point &a, const Point &b, const Po
         return (getSign(a.cross(c,d))!=getSign(b.cross(c,d))  &&  getSign(c.cross(a,b))!=getSign(d.cross(a,b)));
 }
 
+void allPossibleWord(string s)  //accept duplicate characters
+{
+    sort(s.begin(), s.end());
+
+    map<string,ll> mp;
+    vector<string> vc;
+
+    vc.eb(s);
+    mp[s]=1;
+
+    while(next_permutation(s.begin(), s.end()))
+    {
+        if(!mp[s])
+        {
+            vc.eb(s);
+            mp[s]=1;
+        }
+    }
+    cout<<vc.size<<endl;
+    forr(i,0,vc.size)
+    {
+        cout<<vc[i]<<endl;
+    }
+}
 
 bool validParenthesisCheck(string s)
 {
