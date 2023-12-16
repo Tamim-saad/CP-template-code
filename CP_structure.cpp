@@ -145,6 +145,29 @@ void allPossibleWord(string s)  //accept duplicate characters
     }
 }
 
+
+// modified version
+ll allBitSubSequence(vec &v, ll sum)  //by bit manipulation
+{
+    ll temp,ans, n=v.size, mini=LONG_LONG_MAX;
+
+    forr(i,0,pow(2,n))   // check for all number upto total
+    {
+        temp=0;
+        forr(j,0,n)      // check for all bit of a number
+        {
+            if(i>>j & 1) // if jth bit is set
+            {
+                temp+=v[n-j-1];
+            }
+        }
+        ans=abs((sum-temp)-temp);
+        mini=min(ans,mini);
+    }
+    return mini;
+}
+
+
 bool validParenthesisCheck(string s)
 {
     stack<char> st;
