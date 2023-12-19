@@ -168,6 +168,27 @@ ll allBitSubSequence(vec &v, ll sum)  //by bit manipulation
 }
 
 
+ll missingCoinSum(vec v)
+{
+    sortvc(v);
+    ll n=v.size;
+    ll upto=0;
+
+    forr(i,0,n)
+    {
+        if(v[i]>upto+1)
+        {
+            return upto+1;
+        }
+        else
+        {
+            upto+=v[i];
+        }
+    }
+    return upto+1;
+}
+
+
 bool validParenthesisCheck(string s)
 {
     stack<char> st;
