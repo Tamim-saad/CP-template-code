@@ -32,7 +32,9 @@ using namespace std;
 
 
 #define printArrWhole(arr, n) \
-    for (ll i = 0; i < n; i++)
+    for (ll i = 0; i < n; i++) \
+        cout << arr[i] << " ";   \
+    cout << endl;
 
 #define printArrLim(arr, in, n)  \
     for (ll i = in; i <= n; i++) \
