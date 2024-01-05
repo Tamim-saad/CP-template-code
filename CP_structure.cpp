@@ -149,18 +149,19 @@ void allPossibleWord(string s)  //accept duplicate characters
 
 ll subArraySum_for_K(ll n, ll k, ll arr[])
 {
-    ll forsum[n+1]={0};
-    forr(i,1,n+1) { forsum[i]=forsum[i-1]+arr[i]; }
-    
-    ll r=1, l=0, ans=0;
-    while(r<=n)
+    ll forsum[n];
+
+    forsum[0] = arr[0];
+    forr(i,1,n) { forsum[i]=forsum[i-1]+arr[i]; }
+
+    map<ll, ll> mp;
+    ll ans=0;
+
+    forr(i,0,n)
     {
-        while(forsum[r]-forsum[l]<k) r++;
-        while(forsum[r]-forsum[l]>=k)
-        {
-            if(forsum[r]-forsum[l]==k) ans++;
-            l++;
-        }
+        ans+=mp[forsum[i]-k];   
+        ans+=(forsum[i]==k);
+        mp[forsum[i]]++;
     }
     return ans;
 }
