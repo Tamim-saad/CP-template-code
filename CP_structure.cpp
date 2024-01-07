@@ -166,6 +166,35 @@ ll subArraySum_for_K(ll n, ll k, ll arr[])
     return ans;
 }
 
+ll longestSubarrayWithDistinctValues(ll arr[], ll n)
+{
+    ll ans = 0;
+    ll i = 0,j = 0;
+    map<ll, ll> mp;
+
+    while (j < n)
+    {
+        if (mp[arr[j]] == 0)
+        {
+            mp[arr[j]] = 1;
+        }
+        else
+        {
+            ans = max(ans, j - i);
+            while (arr[i] != arr[j])
+            {
+                mp[arr[i]] = 0;
+                i++;
+            }
+            i++;
+        }
+        j++;
+    }
+
+    ans = max(ans, j - i);
+    return ans;
+}
+
 // modified version
 ll allBitSubSequence(vec &v, ll sum)  //by bit manipulation
 {
