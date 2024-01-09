@@ -166,6 +166,21 @@ ll subArraySum_for_K(ll n, ll k, ll arr[])
     return ans;
 }
 
+ll median_from_multiplication_table(ll n)  //n=odd
+{
+    ll low=1,high=n*n,mid,cnt,currPos,pos=(n*n+1)/2;
+    while(low<high)
+    {
+        cnt=0;
+        currPos=(low+high)/2;
+        forr(i,1,n+1)  cnt+=min(currPos/i,n);
+
+        if(pos<=cnt) high=currPos;
+        else low=currPos+1;
+    }
+    return low;
+}
+
 ll longestSubarrayWithDistinctValues(ll arr[], ll n)
 {
     ll ans = 0;
