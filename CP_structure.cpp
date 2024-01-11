@@ -210,6 +210,26 @@ ll longestSubarrayWithDistinctValues(ll arr[], ll n)
     return ans;
 }
 
+ll binaryLength(ll n) {
+    if (n == 0) return 0;
+    return 64 - __builtin_clzll(n);
+}
+
+ll countAllSetBits(ll n)
+{
+    ll total=0;
+    while(n>=1)
+    {
+        ll len=binaryLength(n)-1;
+
+        ll piv=1ll<<len;
+        total+= len * (piv)/2 ;
+        n-= piv;
+        total+= n + 1;
+    }
+    return total;
+}
+
 // modified version
 ll allBitSubSequence(vec &v, ll sum)  //by bit manipulation
 {
