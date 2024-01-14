@@ -462,6 +462,7 @@ int main()
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
         vector<pair<ll, ll>> vpr;
+        // deque<ll> dq, dq1, dq2;
         // vector<vec> vdarr(n, vec(10, 0));
 
 
