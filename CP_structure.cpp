@@ -58,6 +58,18 @@ using namespace std;
         cout << vc[i] << " ";    \
     cout << endl;
 
+#define printdqWhole(dq)  \
+    for (auto x : dq)     \
+        cout << x << " "; \
+    cout << endl;
+
+#define printdqLim(dq, in, n)    \
+    for (ll i = in; i <= n; i++) \
+        cout << dq[i] << " ";    \
+    cout << endl;
+
+
+
 #define sortArr(arr, n) sort(arr, arr + n);
 #define sortvc(v) sort(v.begin(), v.end());
 #define rev(v) reverse(v.begin(), v.end());
