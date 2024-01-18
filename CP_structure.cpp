@@ -264,6 +264,42 @@ ll allBitSubSequence(vec &v, ll sum)  //by bit manipulation
 }
 
 
+ll maxAreaHistogram(vec &height,ll n)
+{
+    stack<ll> s;
+    vec left(n),right(n);
+
+    s.push(0);
+    left[0]=0;
+    forr(i,1,n)
+    {
+        while(!s.empty() && height[i]<=height[s.top()])   s.pop();
+        if(s.empty()) left[i]=0;
+        else left[i]=s.top()+1;
+        s.push(i);
+    }
+    while(!s.empty()) s.pop();
+    ////////////////////////////////////////////////
+    s.push(n-1);
+    right[n-1]=n-1;
+    forrev(i,n-2,0)
+    {
+        while(!s.empty() && height[i]<=height[s.top()])   s.pop();
+        if(s.empty()) right[i]=n-1;
+        else right[i]=s.top()-1;
+        s.push(i);
+    }
+
+    ll maxArea = 0;
+    forr(i,0,n)
+    {
+        ll curr=abs(right[i]-left[i]+1)*height[i];
+        maxArea = max(maxArea,curr);
+    }
+    return maxArea;
+}
+
+
 ll missingCoinSum(vec v)
 {
     sortvc(v);
