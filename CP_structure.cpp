@@ -496,9 +496,11 @@ int main()
     {
         count++;
         ll i, j, k, x, y, z, p, q, m, n, l, r,  l1, l2, r1, r2, ans, flag, sum ;
-        ll mini = lmax, maxi = -1, piv, piv1, piv2, rem, now, mid;
+        ll mini = lmax, maxi = -1, piv, piv1, piv2, low, high, rem, now, prev;
         ll  dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
 
+        // char ch, ch1, ch2, ch3, ch4;
+        // string sarr[n];
         string s, s1 = "", s2 = "";
         //string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "", pivs = "", rems = "";
 
@@ -509,6 +511,7 @@ int main()
         // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
+        // vector <string> vstr(n);
         vector<pair<ll, ll>> vpr;
         // deque<ll> dq, dq1, dq2;
         // vector<vec> vdarr(n, vec(10, 0));
@@ -517,9 +520,13 @@ int main()
 
         pair<ll, ll> pr, pr1, pr2;
         set<ll> st, st1, st2, ms, ldiff, rdiff;
+        // multiset <ll> mst, mst1, mst2;
+        // multiset<ll, greater<ll>> mst, mst1, mst2;
         priority_queue<ll> pq, pq1, pq2;
         stack<ll> stck, stck1, stck2;
         map<int, ll> mp, mp1, mp2;
+        //map<pair<ll,ll>,ll> mpair, mpair1, mpair2;
+        // vector<pair<ll,ll>> vpr, vpr1, vpr2;
         queue<ll> vq[10],vq1,vq2;
 
 
