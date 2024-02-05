@@ -75,6 +75,13 @@ using namespace std;
 #define rev(v) reverse(v.begin(), v.end());
 #define find(v, x) find(v.begin(), v.end(), x);
 
+bool compare_pair(const std::pair<ll,ll>& a, const std::pair<ll,ll>& b)
+{
+    if(a.first == b.first)
+        return a.second > b.second;  // For descending order of second element
+    return a.first < b.first;        // For ascending order of first element
+}
+
 
 struct Point
 {
