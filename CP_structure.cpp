@@ -518,17 +518,18 @@ int main()
         // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
+        // vector<tuple<ll,ll,ll>> vtup, vtup1, vtup2, vtup3;
         // vector <string> vstr(n);
-        vector<pair<ll, ll>> vpr;
-        // deque<ll> dq, dq1, dq2;
+        // vector<pair<ll, ll>> vpr, vpr1, vpr2, vpr3;
         // vector<vec> vdarr(n, vec(10, 0));
-
+        // deque<ll> dq, dq1, dq2;
 
 
         pair<ll, ll> pr, pr1, pr2;
         set<ll> st, st1, st2, ms, ldiff, rdiff;
         // multiset <ll> mst, mst1, mst2;
         // multiset<ll, greater<ll>> mst, mst1, mst2;
+        // multiset <pair<ll,ll>> mst, mst1, mstans;
         priority_queue<ll> pq, pq1, pq2;
         stack<ll> stck, stck1, stck2;
         map<int, ll> mp, mp1, mp2;
@@ -551,6 +552,15 @@ int main()
         // cout<<LONG_MAX<<endl;
         //  cout<<(n|(n>>1))<<endl;
         //  return 0;
+
+        // forr(i,0,n)
+        // {
+        //     cin>>x>>y;
+        //     vtup.push_back(make_tuple(x,y,i));
+        // }
+        // sort(vtup.begin(),vtup.end());
+        // x=get<0>(vtup[i]);
+        
 
 
         forr(i,0,n)
