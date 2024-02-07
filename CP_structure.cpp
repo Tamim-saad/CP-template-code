@@ -496,6 +496,7 @@ ll knapSack(ll n, ll W, ll wt[], ll val[])
     return knapSackRec(W, wt, val, n - 1, dp);
 }
 
+
 int main()
 {
     fast
@@ -508,13 +509,13 @@ int main()
 
         // char ch, ch1, ch2, ch3, ch4;
         // string sarr[n];
-        string s, s1 = "", s2 = "";
+        // string s, s1 = "", s2 = "";
         //string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "", pivs = "", rems = "";
 
         cin >> n;
         //n = s.size;
 
-        ll arr[n];
+        // ll arr[n];
         // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
@@ -525,17 +526,17 @@ int main()
         // deque<ll> dq, dq1, dq2;
 
 
-        pair<ll, ll> pr, pr1, pr2;
-        set<ll> st, st1, st2, ms, ldiff, rdiff;
+        // pair<ll, ll> pr, pr1, pr2;
+        // set<ll> st, st1, st2, ms, ldiff, rdiff;
         // multiset <ll> mst, mst1, mst2;
         // multiset<ll, greater<ll>> mst, mst1, mst2;
         // multiset <pair<ll,ll>> mst, mst1, mstans;
-        priority_queue<ll> pq, pq1, pq2;
-        stack<ll> stck, stck1, stck2;
-        map<int, ll> mp, mp1, mp2;
+        // priority_queue<ll> pq, pq1, pq2;
+        // stack<ll> stck, stck1, stck2;
+        // map<int, ll> mp, mp1, mp2;
         //map<pair<ll,ll>,ll> mpair, mpair1, mpair2;
         // vector<pair<ll,ll>> vpr, vpr1, vpr2;
-        queue<ll> vq[10],vq1,vq2;
+        // queue<ll> vq[10],vq1,vq2;
 
 
         // Point pa,pb,pt[n];
@@ -545,13 +546,11 @@ int main()
 
         ans=0;
         piv=0;
-        flag=0;
-        sum=0;
+        // flag=0;
+        // sum=0;
 
 
-        // cout<<LONG_MAX<<endl;
         //  cout<<(n|(n>>1))<<endl;
-        //  return 0;
 
         // forr(i,0,n)
         // {
@@ -560,9 +559,12 @@ int main()
         // }
         // sort(vtup.begin(),vtup.end());
         // x=get<0>(vtup[i]);
+
         
+        ///--------------begin_Main_Code_here-----------------------
 
 
+        //---------------some_Samples_here--------------------
         forr(i,0,n)
         {
             cin>>x;
@@ -574,18 +576,6 @@ int main()
                 maxi=x;
             }
         }
-        l=p=maxi;
-
-        // ll current_min=n+1, upper_limit=n+1;
-
-        i=piv+1;
-        while(i<n)
-        {
-            l=l^arr[i];
-            p=max(p,l);
-            cout<<"----"<<p<<pl<<l<<endl;
-            i++;
-        }
 
         i=piv-1;
         l=q=maxi;
@@ -596,16 +586,14 @@ int main()
             cout<<"----"<<q<<pl<<l<<endl;
             i--;
         }
+        //-----------------end_of_samples-------------
 
 
+        ///------------------end_Main_Code---------------------------
 
 
+        // ans=(((((2|4)|12)|1)));
+        // cout<<ans<<endl;
 
-
-        // }
-        //ans=(((((2|4)|12)|1)));
-
-        cout<<max(p,q)<<endl;
-        // ans = 0;
     }
 }
