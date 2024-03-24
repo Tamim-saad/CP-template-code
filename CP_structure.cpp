@@ -26,6 +26,7 @@ using namespace std;
 #define lmin LONG_LONG_MIN
 #define forr(i, a, b) for (ll i = a; i < b; i++)
 #define forrev(i, a, b) for (ll i = a; i >= b; i--)
+ll mod=1e9+7;
 
 
 // #define v.all v.begin(), v.end()
