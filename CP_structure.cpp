@@ -449,6 +449,25 @@ void ber_kor()
     }
 }
 
+ll knapsack_01(ll n, ll x, ll weight[], ll profit[])
+{
+    //here ll should be int(ll = int)
+    ll dp[n + 1][x + 1];
+    forr(i, 0, n + 1)
+    {
+        forr(j, 0, x + 1)
+        {
+            if (i == 0 || j == 0)
+                dp[i][j] = 0;
+            else if (weight[i] <= j)
+                dp[i][j] = max(profit[i] + dp[i - 1][j - weight[i]], dp[i - 1][j]);
+            else
+                dp[i][j] = dp[i - 1][j];
+        }
+    }
+    return dp[n][x];
+}
+
 ll knapSackRec(ll W, ll wt[], ll val[], ll i, ll **dp)
 {
     // base condition
