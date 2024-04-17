@@ -519,6 +519,8 @@ int main()
         // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
+        // vector<ll> v(n), v1(n), v2(n);
+        // vector<vec> dp(n+1,vec(x+1,0));
         // vector<tuple<ll,ll,ll>> vtup, vtup1, vtup2, vtup3;
         // vector <string> vstr(n);
         // vector<pair<ll, ll>> vpr, vpr1, vpr2, vpr3;
