@@ -26,7 +26,7 @@ using namespace std;
 #define lmin LONG_LONG_MIN
 #define forr(i, a, b) for (ll i = a; i < b; i++)
 #define forrev(i, a, b) for (ll i = a; i >= b; i--)
-
+const ll mod=1e9+7;
 
 // #define v.all v.begin(), v.end()
 
@@ -449,6 +449,25 @@ void ber_kor()
     }
 }
 
+ll knapsack_01(ll n, ll x, ll weight[], ll profit[])
+{
+    //here ll should be int(ll = int)
+    ll dp[n + 1][x + 1];
+    forr(i, 0, n + 1)
+    {
+        forr(j, 0, x + 1)
+        {
+            if (i == 0 || j == 0)
+                dp[i][j] = 0;
+            else if (weight[i] <= j)
+                dp[i][j] = max(profit[i] + dp[i - 1][j - weight[i]], dp[i - 1][j]);
+            else
+                dp[i][j] = dp[i - 1][j];
+        }
+    }
+    return dp[n][x];
+}
+
 ll knapSackRec(ll W, ll wt[], ll val[], ll i, ll **dp)
 {
     // base condition
@@ -496,6 +515,7 @@ ll knapSack(ll n, ll W, ll wt[], ll val[])
     return knapSackRec(W, wt, val, n - 1, dp);
 }
 
+
 int main()
 {
     fast
@@ -518,6 +538,8 @@ int main()
         // number[n], cost[n], forsum[n], backsum[n];
 
         vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
+        // vector<ll> v(n), v1(n), v2(n);
+        // vector<vec> dp(n+1,vec(x+1,0));
         // vector<tuple<ll,ll,ll>> vtup, vtup1, vtup2, vtup3;
         // vector <string> vstr(n);
         // vector<pair<ll, ll>> vpr, vpr1, vpr2, vpr3;
