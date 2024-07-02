@@ -535,6 +535,9 @@ int main() {
     // Node pa,pb,pt[n];
 
     // cout<<"-----------------yess"<<endl;
+    // adj_list.resize(n + 1);
+    // par.resize(n + 1, -1);
+    // vis.resize(n + 1, false);
 
     ans = 0;
     piv = 0;
