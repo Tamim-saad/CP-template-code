@@ -404,7 +404,7 @@ void dfs(ll curr) {
   return;
 }
 
-/// Cycle Detection in Graph-----------------------------
+/// ---Cycle Detection in Graph-----------------------------
 
 vector<vector<ll>> adj_list;
 vector<ll> par;
@@ -431,6 +431,37 @@ bool dfs(ll curr, ll parent = -1) {
   return false;
 }
 
+/// ---determine farthest node in a tree------------------------
+
+// vector<vector<ll>> adj_list;
+// vector<ll> par, vis;
+// ll node = -1, depth = 0, maxdepth = 0;
+
+void dfs(ll curr, ll parent = -1) {
+  if (vis[curr] != -1) {
+    if (vis[curr] == 1)
+      depth--;
+    return;
+  }
+
+  par[curr] = parent;
+  vis[curr] = 0;
+  depth++;
+  if (maxdepth <= depth) {
+    maxdepth = depth;
+    node = curr;
+  }
+  // cout << curr << pl << depth << ed;
+
+  for (auto x : adj_list[curr]) {
+    if (par[curr] != x)
+      dfs(x, curr);
+  }
+
+  vis[curr] = 1;
+  depth--;
+  return;
+}
 /// -----------------------------------------------------
 
 ll knapsack_01(ll n, ll x, ll weight[], ll profit[]) {
@@ -465,8 +496,8 @@ ll knapSackRec(ll W, ll wt[], ll val[], ll i, ll **dp) {
   } else {
     // Store value in a table before return
     dp[i][W] = max(val[i] + knapSackRec(W - wt[i], wt, val, i - 1, dp),
-    
-    knapSackRec(W, wt, val, i - 1, dp));
+
+                   knapSackRec(W, wt, val, i - 1, dp));
 
     // Return value of table after storing
     return dp[i][W];
@@ -533,6 +564,8 @@ int main() {
 
     // Point pa,pb,pt[n];
     // Node pa,pb,pt[n];
+    // fill(par.begin(), par.end(), -1);
+    // fill(vis.begin(), vis.end(), -1);
 
     // cout<<"-----------------yess"<<endl;
     // adj_list.resize(n + 1);
