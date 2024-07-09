@@ -72,6 +72,9 @@ const ll mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end());
 #define find(v, x) find(v.begin(), v.end(), x);
 
+//-----compare for structure---------------------
+// bool compareBy(const Interval &a, const Interval &b) { return a.end <= b.end; }
+
 bool compare_pair(const std::pair<ll, ll> &a, const std::pair<ll, ll> &b) {
   if (a.first == b.first)
     return a.second > b.second; // For descending order of second element
@@ -325,6 +328,7 @@ ll missingCoinSum(vec v) {
   return upto + 1;
 }
 
+//-----------------------------------------
 bool validParenthesisCheck(string s) {
   stack<char> st;
   forr(i, 0, s.size) {
@@ -341,6 +345,33 @@ bool validParenthesisCheck(string s) {
   else
     return false;
 }
+
+//-----------------------------------------
+bool validBracketOrderCheck(string s) {
+  stack<char> st;
+  for (int i = 0; i < s.size(); i++) {
+    if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+      st.push(s[i]);
+      continue;
+    }
+    if (s[i] == ')') {
+      if (st.empty() || st.top() != '(')
+        return false;
+    } else if (s[i] == '}') {
+      if (st.empty() || st.top() != '{')
+        return false;
+    } else if (s[i] == ']') {
+      if (st.empty() || st.top() != '[')
+        return false;
+    }
+    st.pop();
+  }
+
+  if (st.empty())
+    return true;
+  return false;
+}
+//------------------------------
 
 bool isprime(ll n) {
   ll k = sqrt(n);
