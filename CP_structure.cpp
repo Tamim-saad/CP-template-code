@@ -72,14 +72,25 @@ const ll mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end());
 #define find(v, x) find(v.begin(), v.end(), x);
 
-//-----compare for structure---------------------
-// bool compareBy(const Interval &a, const Interval &b) { return a.end <= b.end; }
+// bool compareByStructureAttribute(const Interval &a, const Interval &b) { return a.end <= b.end; }
 
-bool compare_pair(const std::pair<ll, ll> &a, const std::pair<ll, ll> &b) {
-  if (a.first == b.first)
-    return a.second > b.second; // For descending order of second element
-  return a.first < b.first;     // For ascending order of first element
-}
+// bool compareByPair(const std::pair<ll, ll> &a, const std::pair<ll, ll> &b) {
+//   if (a.first == b.first)
+//     return a.second > b.second; // For descending order of second element
+//   return a.first < b.first;     // For ascending order of first element
+// }
+
+//----------------------------------------------------------------------------
+//---------sort using map and vector instantly-------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// // Create a vector of pairs and copy the map elements into it
+//     std::vector<std::pair<int, int>> vec(map.begin(), map.end());
+
+//     // Sort the vector by value using a lambda function
+//     std::sort(vec.begin(), vec.end(), [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
+//         return a.second < b.second;
+//     });
+//----------------------------------------------------------------------------
 
 struct Point {
   ld x, y;
