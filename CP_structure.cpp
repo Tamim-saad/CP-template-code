@@ -252,6 +252,12 @@ ll binaryLength(ll n) {
   return 64 - __builtin_clzll(n);
 }
 
+int sum_without_using_sign(int a, int b)
+{
+  if(!a || !b) return a|b;
+  return recur(a^b, (a&b)<<1);
+}
+
 ll countAllSetBits(ll n) {
   ll total = 0;
   while (n >= 1) {
