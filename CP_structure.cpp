@@ -252,6 +252,12 @@ ll binaryLength(ll n) {
   return 64 - __builtin_clzll(n);
 }
 
+int sum_without_using_sign(int a, int b)
+{
+  if(!a || !b) return a|b;
+  return recur(a^b, (a&b)<<1);
+}
+
 ll countAllSetBits(ll n) {
   ll total = 0;
   while (n >= 1) {
@@ -598,6 +604,8 @@ int main() {
     // multiset<ll, greater<ll>> mst, mst1, mst2;
     // multiset <pair<ll,ll>> mst, mst1, mstans;
     // priority_queue<ll> pq, pq1, pq2;
+        //************priority queue of 2d vector using customize global comapre() function of 3rd component of each vector*****************
+    // priority_queue<vector<int>, vector<vector<int>>,function<bool(const vector<int> &, const vector<int> &)>> pq(compare);
     // stack<ll> stck, stck1, stck2;
     // map<int, ll> mp, mp1, mp2;
     // map<pair<ll,ll>,ll> mpair, mpair1, mpair2;
