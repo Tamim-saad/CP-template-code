@@ -389,6 +389,24 @@ bool validBracketOrderCheck(string s) {
   return false;
 }
 //------------------------------
+bool subsetSumCheck(vector<int> &nums, int target) {
+    vector<vector<bool>> dp(nums.size() + 1, vector<bool>(target + 1, false));
+    for (int i = 0; i <= nums.size(); i++)
+      dp[i][0] = true;
+
+    for (int i = 1; i <= nums.size(); i++) {
+      for (int j = 0; j <= target; j++) {
+        bool exclude = dp[i - 1][j];
+        bool include = false;
+        if (j - nums[i - 1] >= 0)
+          include = dp[i - 1][j - nums[i - 1]];
+        dp[i][j] = include || exclude;
+      }
+    }
+    return dp[nums.size()][target];
+  }
+
+//--------------------------------
 
 bool isprime(ll n) {
   ll k = sqrt(n);
