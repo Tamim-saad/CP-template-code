@@ -80,6 +80,23 @@ const ll mod = 1e9 + 7;
 //   return a.first < b.first;     // For ascending order of first element
 // }
 
+
+//----------------------------------------------------------------------------
+// // sort the priority queue depned on a specific element
+// struct Node {
+//     int id;
+//     int cost;
+//     int heuristic;
+// };
+// // Functor to compare nodes based on the `cost` (ascending order)
+// struct CompareNode {
+//     bool operator()(const Node& n1, const Node& n2) {
+//         return n1.cost > n2.cost;  // Min-heap based on cost
+//     }
+// };
+// // Declare the priority queue with the custom comparator (min-heap based on cost)
+//   priority_queue<Node, vector<Node>, CompareNode> pq;
+
 //----------------------------------------------------------------------------
 //---------sort using map and vector instantly-------------------------------------------------------------------
 //----------------------------------------------------------------------------
