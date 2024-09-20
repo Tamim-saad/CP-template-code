@@ -406,6 +406,21 @@ bool validBracketOrderCheck(string s) {
   return false;
 }
 //------------------------------
+ll generateAllSubSetOfArray(vector<ll> nums) {
+  ll n = nums.size();
+  for (ll i = 0; i < (1 << n); i++) {
+    set<ll> st;
+    for (ll j = 0; j < n; j++) {
+      if (i & (1 << j)) {
+        st.insert(nums[j]);
+      }
+    }
+    for (auto x : st) {
+      cout << x << " ";
+    }
+    cout << endl;
+  }
+}
 bool subsetSumCheck(vector<int> &nums, int target) {
     vector<vector<bool>> dp(nums.size() + 1, vector<bool>(target + 1, false));
     for (int i = 0; i <= nums.size(); i++)
