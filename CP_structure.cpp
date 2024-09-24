@@ -693,12 +693,10 @@ ll knapSack(ll n, ll W, ll wt[], ll val[]) {
 // sort(vtup.begin(),vtup.end());
 // x=get<0>(vtup[i]);
 
-
-
 ///--------------begin_Main_Code_here-----------------------
 int main() {
   fast init {
-    ll i, j, k, x, y, z, p, q, m, n, l, r, l1, l2, r1, r2, ans, flag, sum;
+    ll i, j, k, x, y, z, p, q, m, n, l, r, ans, flag, sum;
     cin >> n;
     vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
     priority_queue<ll> pq, pq1, pq2;
@@ -713,10 +711,6 @@ int main() {
       if (i >= n - 2)
         sub = x - sub;
     }
-    // while (!pq.empty()) {
-    //   sub -= pq.top();
-    //   pq.pop();
-    // }
     cout << sub << endl;
 
     // cout<<ans<<endl;
