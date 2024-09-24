@@ -634,96 +634,91 @@ ll knapSack(ll n, ll W, ll wt[], ll val[]) {
   return knapSackRec(W, wt, val, n - 1, dp);
 }
 
+// count++;
+// ll i, j, k, x, y, z, p, q, m, n, l, r, l1, l2, r1, r2, ans, flag, sum;
+// ll mini = lmax, maxi = -1, piv, piv1, piv2, low, high, rem, now, prev;
+// ll dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
+
+// char ch, ch1, ch2, ch3, ch4;
+// string sarr[n];
+// string s, s1 = "", s2 = "";
+// string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "",
+// pivs = "", rems = "";
+
+// cin >> n;
+// n = s.size;
+
+// ll arr[n];
+// number[n], cost[n], forsum[n], backsum[n];
+
+// vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
+// vector<ll> v(n), v1(n), v2(n);
+// vector<vec> dp(n+1,vec(x+1,0));
+// vector<tuple<ll,ll,ll>> vtup, vtup1, vtup2, vtup3;
+// vector <string> vstr(n);
+// vector<pair<ll, ll>> vpr, vpr1, vpr2, vpr3;
+// vector<vec> vdarr(n, vec(10, 0));
+// deque<ll> dq, dq1, dq2;
+
+// pair<ll, ll> pr, pr1, pr2;
+// set<ll> st, st1, st2, ms, ldiff, rdiff;
+// multiset <ll> mst, mst1, mst2;
+// multiset<ll, greater<ll>> mst, mst1, mst2;
+// multiset <pair<ll,ll>> mst, mst1, mstans;
+// priority_queue<ll> pq, pq1, pq2;
+//************priority queue of 2d vector using customize global comapre()
+// function of 3rd component of each vector*****************
+// priority_queue<vector<int>, vector<vector<int>>,function<bool(const
+// vector<int> &, const vector<int> &)>> pq(compare); stack<ll> stck, stck1,
+// stck2; map<int, ll> mp, mp1, mp2; map<pair<ll,ll>,ll> mpair, mpair1,
+// mpair2; vector<pair<ll,ll>> vpr, vpr1, vpr2; queue<ll> vq[10],vq1,vq2;
+
+// Point pa,pb,pt[n];
+// Node pa,pb,pt[n];
+// fill(par.begin(), par.end(), -1);
+// fill(vis.begin(), vis.end(), -1);
+
+// cout<<"-----------------yess"<<endl;
+
+// ans = 0;
+// piv = 0;
+// flag=0;
+// sum=0;
+
+// forr(i,0,n)
+// {
+//     cin>>x>>y;
+//     vtup.push_back(make_tuple(x,y,i));
+// }
+// sort(vtup.begin(),vtup.end());
+// x=get<0>(vtup[i]);
+
+
+
+///--------------begin_Main_Code_here-----------------------
 int main() {
   fast init {
-    count++;
     ll i, j, k, x, y, z, p, q, m, n, l, r, l1, l2, r1, r2, ans, flag, sum;
-    ll mini = lmax, maxi = -1, piv, piv1, piv2, low, high, rem, now, prev;
-    ll dif = 0, change = 0, total = 0, same = 0, plus = 0, minus = 0, zero = 0;
-
-    // char ch, ch1, ch2, ch3, ch4;
-    // string sarr[n];
-    // string s, s1 = "", s2 = "";
-    // string res1 = "", res2 = "", chk1 = "", chk2 = "", chk3 = "", chk4 = "",
-    // pivs = "", rems = "";
-
     cin >> n;
-    // n = s.size;
-
-    // ll arr[n];
-    // number[n], cost[n], forsum[n], backsum[n];
-
     vector<ll> v, v1, v2, vans, vpos, vlen, vsum, vdif;
-    // vector<ll> v(n), v1(n), v2(n);
-    // vector<vec> dp(n+1,vec(x+1,0));
-    // vector<tuple<ll,ll,ll>> vtup, vtup1, vtup2, vtup3;
-    // vector <string> vstr(n);
-    // vector<pair<ll, ll>> vpr, vpr1, vpr2, vpr3;
-    // vector<vec> vdarr(n, vec(10, 0));
-    // deque<ll> dq, dq1, dq2;
+    priority_queue<ll> pq, pq1, pq2;
 
-    // pair<ll, ll> pr, pr1, pr2;
-    // set<ll> st, st1, st2, ms, ldiff, rdiff;
-    // multiset <ll> mst, mst1, mst2;
-    // multiset<ll, greater<ll>> mst, mst1, mst2;
-    // multiset <pair<ll,ll>> mst, mst1, mstans;
-    // priority_queue<ll> pq, pq1, pq2;
-        //************priority queue of 2d vector using customize global comapre() function of 3rd component of each vector*****************
-    // priority_queue<vector<int>, vector<vector<int>>,function<bool(const vector<int> &, const vector<int> &)>> pq(compare);
-    // stack<ll> stck, stck1, stck2;
-    // map<int, ll> mp, mp1, mp2;
-    // map<pair<ll,ll>,ll> mpair, mpair1, mpair2;
-    // vector<pair<ll,ll>> vpr, vpr1, vpr2;
-    // queue<ll> vq[10],vq1,vq2;
-
-    // Point pa,pb,pt[n];
-    // Node pa,pb,pt[n];
-    // fill(par.begin(), par.end(), -1);
-    // fill(vis.begin(), vis.end(), -1);
-
-    // cout<<"-----------------yess"<<endl;
-
-    ans = 0;
-    piv = 0;
-    // flag=0;
-    // sum=0;
-
-    //  cout<<(n|(n>>1))<<endl;
-
-    // forr(i,0,n)
-    // {
-    //     cin>>x>>y;
-    //     vtup.push_back(make_tuple(x,y,i));
-    // }
-    // sort(vtup.begin(),vtup.end());
-    // x=get<0>(vtup[i]);
-
-    ///--------------begin_Main_Code_here-----------------------
-
-    //---------------some_Samples_here--------------------
+    ll sub = 0;
     forr(i, 0, n) {
       cin >> x;
-      arr[i] = x;
-
-      if (maxi < x) {
-        piv = i;
-        maxi = x;
-      }
+      cout << "test" << endl;
+      v.eb(x);
+      if (i < n - 2)
+        sub -= x;
+      if (i >= n - 2)
+        sub = x - sub;
     }
+    // while (!pq.empty()) {
+    //   sub -= pq.top();
+    //   pq.pop();
+    // }
+    cout << sub << endl;
 
-    i = piv - 1;
-    l = q = maxi;
-    while (i >= 0) {
-      l = l ^ arr[i];
-      q = max(q, l);
-      cout << "----" << q << pl << l << endl;
-      i--;
-    }
-    //-----------------end_of_samples-------------
-
-    ///------------------end_Main_Code---------------------------
-
-    // ans=(((((2|4)|12)|1)));
     // cout<<ans<<endl;
   }
 }
