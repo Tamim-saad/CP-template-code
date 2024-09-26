@@ -6,8 +6,13 @@ using namespace std;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 
 //rest of code
-//also see details in readme file
+//link to understand:
 
+https://chatgpt.com/share/66f4ff68-1ffc-8012-89f6-048bfb5b3e97
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+//also see details below
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 Let’s dive deeper into the code and explanation for the indexed_set from the Policy-based Data Structures (PBDS), particularly focusing on its components, functionality, and why it is chosen over other structures.
 
