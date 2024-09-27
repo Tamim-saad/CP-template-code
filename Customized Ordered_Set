@@ -40,8 +40,3 @@ int main() {
 //link to understand:
 https://chatgpt.com/share/66f4ff68-1ffc-8012-89f6-048bfb5b3e97
 
-
-
-indexed_set combines the advantages of a set (sorted order, fast deletion) with the benefits of random access like in a vector.
-For the Josephus Problem, you need to efficiently select and delete people from a dynamic list, which requires random access by index and efficient removal.
-PBDS’s tree_order_statistics_node_update allows you to efficiently solve the problem in O(n log n) time by ensuring fast access and updates as the list of people changes.
