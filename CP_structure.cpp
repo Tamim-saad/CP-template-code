@@ -13,9 +13,15 @@ using namespace std;
 //           typename Policy>
 // class tree;
 
+typedef tree<int, null_type, less<int>, rb_tree_tag,
+             tree_order_statistics_node_update>
+    indexed_set;
+
 typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
              tree_order_statistics_node_update>
     indexed_multiset;
+
+
 
 
 #define init                                                                   \
