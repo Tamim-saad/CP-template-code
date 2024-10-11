@@ -1,7 +1,9 @@
 /// say Alhamdulillah
 
 #include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
 using namespace std;
+using namespace __gnu_pbds;
 
 #define fast                                                                   \
   ios_base::sync_with_stdio(0);                                                \
