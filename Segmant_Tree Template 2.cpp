@@ -1,3 +1,5 @@
+//max prefix sum queries cses solution
+
 #include <bits/stdc++.h>
 using namespace std;
 
