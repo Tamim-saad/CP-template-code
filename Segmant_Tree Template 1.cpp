@@ -1,3 +1,5 @@
+//range minimum queries cses solution
+
 #include <bits/stdc++.h>
 using namespace std;
 
