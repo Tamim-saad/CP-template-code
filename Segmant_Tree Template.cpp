@@ -6,25 +6,31 @@ using namespace std;
 class SegmentTree {
 public:
   vector<ll> segmantTree;
+  vector<ll> v;  // Internal vector for the segment tree
   ll size;
 
-  SegmentTree(ll n) {
-    size = 4 * n + 5;
+  SegmentTree(vector<ll>& input) {
+    v = input;
+    size = 4 * v.size();
     segmantTree.resize(size);
   }
 
-  void build(vector<ll> &v, ll rootPos, ll l, ll r) {
+  // Merging function
+  ll merge(ll leftVal, ll rightVal) {
+    return min(leftVal, rightVal);
+  }
+
+  void build(ll rootPos, ll l, ll r) {
     if (l == r) {
       segmantTree[rootPos] = v[l];
       return;
     }
 
     ll m = (l + r) / 2;
-    build(v, rootPos * 2, l, m);
-    build(v, rootPos * 2 + 1, m + 1, r);
+    build(rootPos * 2 + 1, l, m);
+    build(rootPos * 2 + 2, m + 1, r);
 
-    segmantTree[rootPos] =
-        min(segmantTree[rootPos * 2], segmantTree[rootPos * 2 + 1]);
+    segmantTree[rootPos] = merge(segmantTree[rootPos * 2 + 1], segmantTree[rootPos * 2 + 2]);
   }
 
   void update(ll rootPos, ll l, ll r, ll pos, ll newValue) {
@@ -32,17 +38,17 @@ public:
       return;
     if (l == r) {
       segmantTree[rootPos] = newValue;
+      v[l] = newValue;  // Update internal vector
       return;
     }
 
     ll m = (l + r) / 2;
     if (l <= pos && pos <= m)
-      update(rootPos * 2, l, m, pos, newValue);
+      update(rootPos * 2 + 1, l, m, pos, newValue);
     else
-      update(rootPos * 2 + 1, m + 1, r, pos, newValue);
+      update(rootPos * 2 + 2, m + 1, r, pos, newValue);
 
-    segmantTree[rootPos] =
-        min(segmantTree[rootPos * 2], segmantTree[rootPos * 2 + 1]);
+    segmantTree[rootPos] = merge(segmantTree[rootPos * 2 + 1], segmantTree[rootPos * 2 + 2]);
   }
 
   ll query(ll rootPos, ll l, ll r, ll L, ll R) {
@@ -52,10 +58,10 @@ public:
       return segmantTree[rootPos];
 
     ll m = (l + r) / 2;
-    ll ql = query(rootPos * 2, l, m, L, R);
-    ll qr = query(rootPos * 2 + 1, m + 1, r, L, R);
+    ll ql = query(rootPos * 2 + 1, l, m, L, R);
+    ll qr = query(rootPos * 2 + 2, m + 1, r, L, R);
 
-    return min(ql, qr);
+    return merge(ql, qr);
   }
 };
 
@@ -63,23 +69,23 @@ int main() {
   ll q, n;
   cin >> n >> q;
 
-  vector<ll> v(n + 1);
-  for (ll i = 1; i <= n; i++) {
-    cin >> v[i];
+  vector<ll> input(n);
+  for (ll i = 0; i < n; i++) {
+    cin >> input[i];
   }
 
-  SegmentTree st(n);
-  st.build(v, 1, 1, n);
+  SegmentTree st(input);
+  st.build(0, 0, n - 1);
 
   for (ll i = 0; i < q; i++) {
     ll k, a, b;
     cin >> k >> a >> b;
 
     if (k == 1) {
-      st.update(1, 1, n, a, b);
+      st.update(0, 0, n - 1, a, b);  // 0-based indexing
     }
     if (k == 2) {
-      cout << st.query(1, 1, n, a, b) << endl;
+      cout << st.query(0, 0, n - 1, a, b) << endl;  // 0-based indexing
     }
   }
   return 0;
