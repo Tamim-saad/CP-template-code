@@ -127,6 +127,17 @@ const ll mod = 1e9 + 7;
 //     });
 //----------------------------------------------------------------------------
 
+// by lucas theorem
+bool is_nCr_odd(ll n, ll r) {
+  while (n > 0 || r > 0) {
+    if (r & 1 > n & 1)
+      return false;
+    n >>= 1;
+    r >>= 1;
+  }
+  return true;
+}
+
 class SegmentTree {
 private:
   vector<int> tree;
