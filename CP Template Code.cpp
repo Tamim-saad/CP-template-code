@@ -127,6 +127,45 @@ const ll mod = 1e9 + 7;
 //     });
 //----------------------------------------------------------------------------
 
+void kmp_pattern_count_into_string(string s, string p) {
+  vector<ll> v(p.size(), 0);
+  ll i = 0, j = 1;
+  while (j < p.size()) {
+    if (p[i] == p[j]) {
+      v[j] = i + 1;
+      i++;
+      j++;
+    } else {
+      if (i != 0)
+        i = v[i - 1];
+      else
+        j++;
+    }
+  }
+
+  ll ans = 0;
+  i = 0;
+  j = 0;
+  while (j < s.size()) {
+    if (s[j] == p[i]) {
+      i++;
+      j++;
+      if (i == p.size()) {
+        ans++;
+        i = v[i - 1];
+      }
+    } else {
+      if (i != 0)
+        i = v[i - 1];
+      else
+        j++;
+    }
+  }
+  cout << ans << endl;
+}
+
+//----------------------------------------------------------------------------------------
+
 // by lucas theorem
 bool is_nCr_odd(ll n, ll r) {
   while (n > 0 || r > 0) {
