@@ -1,5 +1,3 @@
-//max prefix sum queries cses solution
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -69,7 +67,7 @@ public:
     merge(rootPos, 2 * rootPos + 1, 2 * rootPos + 2);
   }
 
-  Node queryNode(ll rootPos, ll l, ll r, ll L, ll R) {
+  Node query(ll rootPos, ll l, ll r, ll L, ll R) {
     if (R < l || L > r) {
       return Node();
     }
@@ -78,18 +76,14 @@ public:
     }
 
     ll m = (l + r) / 2;
-    Node left = queryNode(rootPos * 2 + 1, l, m, L, R);
-    Node right = queryNode(rootPos * 2 + 2, m + 1, r, L, R);
+    Node left = query(rootPos * 2 + 1, l, m, L, R);
+    Node right = query(rootPos * 2 + 2, m + 1, r, L, R);
 
-    Node result;
-    result.totalSum = left.totalSum + right.totalSum;
-    result.maxPrefixSum =
+    Node ans;
+    ans.totalSum = left.totalSum + right.totalSum;
+    ans.maxPrefixSum =
         max(left.maxPrefixSum, left.totalSum + right.maxPrefixSum);
-    return result;
-  }
-
-  ll query(ll rootPos, ll l, ll r, ll L, ll R) {
-    return queryNode(rootPos, l, r, L, R).maxPrefixSum;
+    return ans;
   }
 };
 
@@ -108,12 +102,11 @@ int main() {
     ll k, a, b;
     cin >> k >> a >> b;
 
-    if (k == 1) {
-      st.update(0, 0, n - 1, a - 1, b); // Updated to handle value `b`
-    }
-    if (k == 2) {
-      cout << st.query(0, 0, n - 1, a - 1, b - 1) << endl;
-    }
+    if (k == 1)
+      st.update(0, 0, n - 1, a - 1, b);
+
+    if (k == 2)
+      cout << st.query(0, 0, n - 1, a - 1, b - 1).maxPrefixSum << endl;
   }
 
   return 0;
