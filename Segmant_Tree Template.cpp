@@ -1,107 +1,86 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define ll long long
+
 class SegmentTree {
-private:
-  vector<int> tree;
-  vector<int> v;
-  int n;
-
-  // Build the segment tree
-  void build(int node, int start, int end) {
-    if (start == end) {
-      // Leaf node will contain a single element
-      tree[node] = v[start];
-    } else {
-      int mid = (start + end) / 2;
-      build(2 * node + 1, start, mid);
-      build(2 * node + 2, mid + 1, end);
-      // Internal node will be the sum/min/max of the two child nodes
-      tree[node] =
-          tree[2 * node + 1] +
-          tree[2 * node + 2]; // Modify this based on operation (sum/min/max)
-    }
-  }
-
-  // Update the element at a specific position
-  void update(int node, int start, int end, int idx, int val) {
-    if (start == end) {
-      // Leaf node, update value
-      v[idx] = val;
-      tree[node] = val;
-    } else {
-      int mid = (start + end) / 2;
-      if (start <= idx && idx <= mid) {
-        update(2 * node + 1, start, mid, idx, val);
-      } else {
-        update(2 * node + 2, mid + 1, end, idx, val);
-      }
-      // Update the internal node after updating the child nodes
-      tree[node] =
-          tree[2 * node + 1] +
-          tree[2 * node + 2]; // Modify this based on operation (sum/min/max)
-    }
-  }
-
-  // Query the segment tree for a range
-  int query(int node, int start, int end, int L, int R) {
-    if (R < start || end < L) {
-      // Range represented by a node is completely outside the given range
-      return 0; // Modify this based on operation (for min use INT_MAX, for sum
-                // use 0)
-    }
-    if (L <= start && end <= R) {
-      // Range represented by a node is completely inside the given range
-      return tree[node];
-    }
-
-    // Range represented by a node is partially inside and partially outside the
-    // given range
-    int mid = (start + end) / 2;
-    int leftQuery = query(2 * node + 1, start, mid, L, R);
-    int rightQuery = query(2 * node + 2, mid + 1, end, L, R);
-    return leftQuery +
-           rightQuery; // Modify this based on operation (sum/min/max)
-  }
-
 public:
-  // Constructor to initialize the segment tree
-  SegmentTree(vector<int> &input) {
-    v = input;
-    n = v.size();
-    tree.resize(4 * n);
-    build(0, 0, n - 1);
+  vector<ll> segmantTree;
+  ll size;
+
+  SegmentTree(ll n) {
+    size = 4 * n + 5;
+    segmantTree.resize(size);
   }
 
-  // Function to call update operation
-  void update(int idx, int val) { update(0, 0, n - 1, idx, val); }
+  void build(vector<ll> &v, ll rootPos, ll l, ll r) {
+    if (l == r) {
+      segmantTree[rootPos] = v[l];
+      return;
+    }
 
-  // Function to call range query operation
-  int query(int L, int R) { return query(0, 0, n - 1, L, R); }
+    ll m = (l + r) / 2;
+    build(v, rootPos * 2, l, m);
+    build(v, rootPos * 2 + 1, m + 1, r);
+
+    segmantTree[rootPos] =
+        min(segmantTree[rootPos * 2], segmantTree[rootPos * 2 + 1]);
+  }
+
+  void update(ll rootPos, ll l, ll r, ll pos, ll newValue) {
+    if (pos < l || pos > r)
+      return;
+    if (l == r) {
+      segmantTree[rootPos] = newValue;
+      return;
+    }
+
+    ll m = (l + r) / 2;
+    if (l <= pos && pos <= m)
+      update(rootPos * 2, l, m, pos, newValue);
+    else
+      update(rootPos * 2 + 1, m + 1, r, pos, newValue);
+
+    segmantTree[rootPos] =
+        min(segmantTree[rootPos * 2], segmantTree[rootPos * 2 + 1]);
+  }
+
+  ll query(ll rootPos, ll l, ll r, ll L, ll R) {
+    if (r < L || R < l)
+      return LONG_LONG_MAX;
+    if (L <= l && r <= R)
+      return segmantTree[rootPos];
+
+    ll m = (l + r) / 2;
+    ll ql = query(rootPos * 2, l, m, L, R);
+    ll qr = query(rootPos * 2 + 1, m + 1, r, L, R);
+
+    return min(ql, qr);
+  }
 };
 
 int main() {
-  int n, q;
+  ll q, n;
   cin >> n >> q;
-  vector<int> v(n);
 
-  for (int i = 0; i < n; i++) {
+  vector<ll> v(n + 1);
+  for (ll i = 1; i <= n; i++) {
     cin >> v[i];
   }
 
-  SegmentTree segTree(v);
+  SegmentTree st(n);
+  st.build(v, 1, 1, n);
 
-  for (int i = 0; i < q; i++) {
-    int type, a, b;
-    cin >> type >> a >> b;
+  for (ll i = 0; i < q; i++) {
+    ll k, a, b;
+    cin >> k >> a >> b;
 
-    if (type == 1) {            // Update operation
-      segTree.update(a - 1, b); // Adjust for 0-based indexing
-    } else if (type == 2) {     // Range query
-      cout << segTree.query(a - 1, b - 1)
-           << endl; // Adjust for 0-based indexing
+    if (k == 1) {
+      st.update(1, 1, n, a, b);
+    }
+    if (k == 2) {
+      cout << st.query(1, 1, n, a, b) << endl;
     }
   }
-
   return 0;
 }
