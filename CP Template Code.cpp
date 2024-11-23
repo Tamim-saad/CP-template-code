@@ -637,8 +637,12 @@ void compute_factorial_with_modular_inverse(ll mod, vector<ll> &factorials,
 }
 //---------------------------------------------------------------------------------
 
-// string binary = bitset<8>(n).to_string();
-// unsigned long decimal =bitset<8>(binary).to_ulong();
+string binary = bitset<8>(n).to_string();
+unsigned long decimal =bitset<8>(binary).to_ulong();
+
+string binaryStr = "110111";
+int value = std::stoi(binaryStr, nullptr, 2); // Convert binary string to integer
+std::cout << value << std::endl; // Output: 55
 
 const ll N = 1005;
 vector<vec> adj_list(N);
