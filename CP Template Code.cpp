@@ -644,29 +644,49 @@ string binaryStr = "110111";
 int value = std::stoi(binaryStr, nullptr, 2); // Convert binary string to integer
 std::cout << value << std::endl; // Output: 55
 
-const ll N = 1005;
-vector<vec> adj_list(N);
+/// ------------------------------------------
+const ll N = 100007;
+vector<vector<ll>> adj_list(N);
 ll par[N];
 map<ll, ll> vis;
-map<ll, ll> ans_list;
+ll timee = 0, gcount;
 ll gv[N];
-map<ll, ll> color;
-int timee = 0;
+vector<ll> gSizes;
 
-map<ll, ll> cat;
-
-vec lst;
-
-void dfs(ll curr) {
+void dfs(ll curr, ll parnt) {
   timee++;
+  gcount++;
   gv[timee] = curr;
+  par[curr] = parnt;
+  vis[curr] = 1;
 
-  forr(i, 0, adj_list[curr].size) {
-    if (par[curr] != adj_list[curr][i]) {
-      dfs(adj_list[curr][i]);
+  for (int i = 0; i < adj_list[curr].size(); i++) {
+    ll neigh = adj_list[curr][i];
+    if (par[curr] != neigh) {
+      dfs(neigh, curr);
     }
   }
   return;
+}
+
+int main() {
+  fast;
+  ll n, m, x, y, i;
+  cin >> n >> m;
+
+  for (i = 1; i <= m; i++) {
+    cin >> x >> y;
+    adj_list[x].emplace_back(y);
+    adj_list[y].emplace_back(x);
+  }
+
+  for (i = 1; i < n + 1; i++) {
+    if (!vis[i]) {
+      gcount = 0;
+      dfs(i, i);
+      gSizes.emplace_back(gcount);
+    }
+  }
 }
 
 /// ---Cycle Detection in Graph-----------------------------
