@@ -727,7 +727,24 @@ void dfs(ll curr, ll parent = -1) {
   depth--;
   return;
 }
-/// -----------------------------------------------------
+/// --------------**************--------------------------
+//this is efficient 1d DP of boolean value for fixed size input(eg: 100007)
+//for example: if we can find all possible sum for input :2,5,7
+//output will be : 0, 2, 5, 7, 9, 12, 14
+//then output of following code: 101001010100101
+//here position of set bits indicate the possible sums
+/// --------------**************--------------------------
+
+  bitset<100007> dp;
+  dp[0] = 1;
+
+  for (int size : gv)
+    dp |= (dp << size);
+
+  for (int i = 1; i <= n; i++)
+    cout << dp[i];
+
+/// ------------------------------------------------------
 
 ll knapsack_01(ll n, ll x, ll weight[], ll profit[]) {
   // here ll should be int(ll = int)
