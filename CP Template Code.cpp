@@ -23,9 +23,6 @@ typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
              tree_order_statistics_node_update>
     indexed_multiset;
 
-
-
-
 #define init                                                                   \
   ll count = 0, zz, t;                                                         \
   cin >> t;                                                                    \
@@ -90,14 +87,14 @@ const ll mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end());
 #define find(v, x) find(v.begin(), v.end(), x);
 
-// bool compareByStructureAttribute(const Interval &a, const Interval &b) { return a.end <= b.end; }
+// bool compareByStructureAttribute(const Interval &a, const Interval &b) {
+// return a.end <= b.end; }
 
 // bool compareByPair(const std::pair<ll, ll> &a, const std::pair<ll, ll> &b) {
 //   if (a.first == b.first)
 //     return a.second > b.second; // For descending order of second element
 //   return a.first < b.first;     // For ascending order of first element
 // }
-
 
 //----------------------------------------------------------------------------
 // // sort the priority queue depned on a specific element
@@ -112,17 +109,20 @@ const ll mod = 1e9 + 7;
 //         return n1.cost > n2.cost;  // Min-heap based on cost
 //     }
 // };
-// // Declare the priority queue with the custom comparator (min-heap based on cost)
+// // Declare the priority queue with the custom comparator (min-heap based on
+// cost)
 //   priority_queue<Node, vector<Node>, CompareNode> pq;
 
 //----------------------------------------------------------------------------
-//---------sort using map and vector instantly-------------------------------------------------------------------
+//---------sort using map and vector
+// instantly-------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // // Create a vector of pairs and copy the map elements into it
 //     std::vector<std::pair<int, int>> vec(map.begin(), map.end());
 
 //     // Sort the vector by value using a lambda function
-//     std::sort(vec.begin(), vec.end(), [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
+//     std::sort(vec.begin(), vec.end(), [](const std::pair<int, int>& a, const
+//     std::pair<int, int>& b) {
 //         return a.second < b.second;
 //     });
 //----------------------------------------------------------------------------
@@ -418,10 +418,10 @@ ll binaryLength(ll n) {
   return 64 - __builtin_clzll(n);
 }
 
-int sum_without_using_sign(int a, int b)
-{
-  if(!a || !b) return a|b;
-  return recur(a^b, (a&b)<<1);
+int sum_without_using_sign(int a, int b) {
+  if (!a || !b)
+    return a | b;
+  return recur(a ^ b, (a & b) << 1);
 }
 
 ll countAllSetBits(ll n) {
@@ -571,21 +571,21 @@ ll generateAllSubSetOfArray(vector<ll> nums) {
   }
 }
 bool subsetSumCheck(vector<int> &nums, int target) {
-    vector<vector<bool>> dp(nums.size() + 1, vector<bool>(target + 1, false));
-    for (int i = 0; i <= nums.size(); i++)
-      dp[i][0] = true;
+  vector<vector<bool>> dp(nums.size() + 1, vector<bool>(target + 1, false));
+  for (int i = 0; i <= nums.size(); i++)
+    dp[i][0] = true;
 
-    for (int i = 1; i <= nums.size(); i++) {
-      for (int j = 0; j <= target; j++) {
-        bool exclude = dp[i - 1][j];
-        bool include = false;
-        if (j - nums[i - 1] >= 0)
-          include = dp[i - 1][j - nums[i - 1]];
-        dp[i][j] = include || exclude;
-      }
+  for (int i = 1; i <= nums.size(); i++) {
+    for (int j = 0; j <= target; j++) {
+      bool exclude = dp[i - 1][j];
+      bool include = false;
+      if (j - nums[i - 1] >= 0)
+        include = dp[i - 1][j - nums[i - 1]];
+      dp[i][j] = include || exclude;
     }
-    return dp[nums.size()][target];
   }
+  return dp[nums.size()][target];
+}
 
 //--------------------------------
 
@@ -610,7 +610,8 @@ ll gcd(ll arr[], ll n) {
   return ans;
 }
 
-//---------compute factorial with modular exponent--------------------------------------------------------
+//---------compute factorial with modular
+// exponent--------------------------------------------------------
 ll modular_exponent(ll base, ll pow, ll mod) {
   if (pow == 0)
     return 1;
@@ -624,7 +625,7 @@ ll modular_exponent(ll base, ll pow, ll mod) {
 }
 
 void compute_factorial_with_modular_inverse(ll mod, vector<ll> &factorials,
-                       vector<ll> &factorials_mod_inv) {
+                                            vector<ll> &factorials_mod_inv) {
   factorials[0] = 1;
   int n = factorials.size() - 1;
   for (int i = 1; i <= n; i++) {
@@ -638,11 +639,12 @@ void compute_factorial_with_modular_inverse(ll mod, vector<ll> &factorials,
 //---------------------------------------------------------------------------------
 
 string binary = bitset<8>(n).to_string();
-unsigned long decimal =bitset<8>(binary).to_ulong();
+unsigned long decimal = bitset<8>(binary).to_ulong();
 
 string binaryStr = "110111";
-int value = std::stoi(binaryStr, nullptr, 2); // Convert binary string to integer
-std::cout << value << std::endl; // Output: 55
+int value =
+    std::stoi(binaryStr, nullptr, 2); // Convert binary string to integer
+std::cout << value << std::endl;      // Output: 55
 
 /// ------------------------------------------
 const ll N = 100007;
@@ -748,21 +750,21 @@ void dfs(ll curr, ll parent = -1) {
   return;
 }
 /// --------------**************--------------------------
-//this is efficient 1d DP of boolean value for fixed size input(eg: 100007)
-//for example: if we can find all possible sum for input :2,5,7
-//output will be : 0, 2, 5, 7, 9, 12, 14
-//then output of following code: 101001010100101
-//here position of set bits indicate the possible sums
+// this is efficient 1d DP of boolean value for fixed size input(eg: 100007)
+// for example: if we can find all possible sum for input :2,5,7
+// output will be : 0, 2, 5, 7, 9, 12, 14
+// then output of following code: 101001010100101
+// here position of set bits indicate the possible sums
 /// --------------**************--------------------------
 
-  bitset<100007> dp;
-  dp[0] = 1;
+bitset<100007> dp;
+dp[0] = 1;
 
-  for (int size : gv)
-    dp |= (dp << size);
+for (int size : gv)
+  dp |= (dp << size);
 
-  for (int i = 1; i <= n; i++)
-    cout << dp[i];
+for (int i = 1; i <= n; i++)
+  cout << dp[i];
 
 /// ------------------------------------------------------
 
