@@ -259,33 +259,33 @@ public:
 //------------------------------------------------------------------------------------------
 
 struct Point {
-  ld x, y;
+  ll x, y;
 
 public:
   Point() {}
-  Point(ld _x, ld _y) : x(_x), y(_y) {}
+  Point(ll _x, ll _y) : x(_x), y(_y) {}
   Point operator+(const Point &p) const { return Point(x + p.x, y + p.y); }
   Point operator-(const Point &p) const { return Point(x - p.x, y - p.y); }
-  ld operator*(const Point &p) const { return (x * p.y - y * p.x); }
+  ll operator*(const Point &p) const { return (x * p.y - y * p.x); }
 
-  void operator+=(const ld k) {
+  void operator+=(const ll k) {
     x += k;
     y += k;
   }
-  void operator-=(const ld k) {
+  void operator-=(const ll k) {
     x -= k;
     y -= k;
   }
-  void operator*=(const ld k) {
+  void operator*=(const ll k) {
     x *= k;
     y *= k;
   }
-  void operator/=(const ld k) {
+  void operator/=(const ll k) {
     x /= k;
     y /= k;
   }
 
-  ld cross(const Point &b, const Point &c) const {
+  ll cross(const Point &b, const Point &c) const {
     return (b - *this) * (c - *this);
   }
   ld len(const Point &a, const Point &b) const {
