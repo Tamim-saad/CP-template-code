@@ -309,6 +309,10 @@ public:
   }
 };
 
+bool cwDirectionCheck(const Point &a, const Point &b, const Point &c) {
+  return (a.cross(b, c) < 0); //return true , if (a,b,c) points are clockwise
+}
+
 // ld area(Point a, Point b, Point c) { return abs((a.x * (b.y - c.y) + b.x *
 // (c.y - a.y) + c.x * (a.y - b.y)) / 2.0); }
 
