@@ -312,7 +312,7 @@ public:
 ll getPolygonArea(vector<Point> &points) {
   ll n = points.size();
   ll area = 0;
-  Point pa = points[0], pb = points[1];
+  Point pa = points[0], pb = points[1], pc;
 
   for (ll i = 2; i < n; i++) {
     pc = points[i];
