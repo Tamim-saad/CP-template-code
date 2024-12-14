@@ -309,6 +309,19 @@ public:
   }
 };
 
+ll getPolygonArea(vector<Point> &points) {
+  ll n = points.size();
+  ll area = 0;
+  Point pa = points[0], pb = points[1];
+
+  for (ll i = 2; i < n; i++) {
+    pc = points[i];
+    area += pa.cross(pb, pc);
+    pb = pc;
+  }
+  return area;
+}
+
 bool cwDirectionCheck(const Point &a, const Point &b, const Point &c) {
   return (a.cross(b, c) < 0); //return true , if (a,b,c) points are clockwise
 }
