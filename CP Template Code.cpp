@@ -10,6 +10,7 @@ using namespace __gnu_pbds;
   cin.tie(0);                                                                  \
   cout.tie(0);
 #define ll long long
+const double PI = acos(-1.0);
 
 // template <typename Key, typename Mapped, typename Compare, typename Tag,
 //           typename Policy>
