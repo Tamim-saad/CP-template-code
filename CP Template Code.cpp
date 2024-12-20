@@ -259,6 +259,61 @@ public:
 
 //------------------------------------------------------------------------------------------
 
+const double PI = acos(-1.0);
+using cd = complex<double>;
+vector<cd> fft(vector<cd> p, ll invert) {
+  ll n = p.size();
+  if (n == 1)
+    return p;
+
+  vector<cd> pe, po;
+  for (ll i = 0; i < n / 2; i++) {
+    pe.emplace_back(p[2 * i]);
+    po.emplace_back(p[2 * i + 1]);
+  }
+
+  pe = fft(pe, invert);
+  po = fft(po, invert);
+
+  double ang = (2 * invert * PI) / n;
+  cd w(1), w_d(cos(ang), sin(ang));
+
+  for (ll i = 0; i < n / 2; i++) {
+    p[i] = pe[i] + w * po[i];
+    p[i + n / 2] = pe[i] - w * po[i];
+    w *= w_d;
+  }
+  return p;
+}
+
+vector<ll> multiply(vector<ll> a, vector<ll> b) {
+  ll m = a.size() + b.size() - 1;
+
+  ll n = 1;
+  while (n < m)
+    n <<= 1;
+  a.resize(n);
+  b.resize(n);
+
+  vector<cd> fa(a.begin(), a.end());
+  vector<cd> fb(b.begin(), b.end());
+
+  fa = fft(fa, 1);
+  fb = fft(fb, 1);
+
+  for (ll i = 0; i < n; i++) {
+    fa[i] = fa[i] * (fb[i]);
+  }
+
+  fa = fft(fa, -1);
+  vector<ll> result(m);
+  for (ll i = 0; i < m; i++)
+    result[i] = llround(fa[i].real() / n);
+  return result;
+}
+
+//------------------------------------------------------------------------------------------
+
 struct Point {
   ll x, y;
 
