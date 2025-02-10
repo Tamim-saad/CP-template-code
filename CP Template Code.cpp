@@ -663,13 +663,15 @@ bool subsetSumCheck(vector<int> &nums, int target) {
 //--------------------------------
 
 bool isprime(ll n) {
+  if (n == 1) return false;
+  if (n == 2 || n == 3) return true;
   ll k = sqrt(n);
-  forr(i, 0, k) {
-    if (n % i == 0)
-      return false;
+  for (ll i = 2; i <= k; i++) {
+    if (n % i == 0) return false;
   }
   return true;
 }
+
 
 ll lcm(ll arr[], ll n) {
   ll ans = arr[0];
