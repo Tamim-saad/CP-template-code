@@ -48,9 +48,8 @@ const ll mod = 1e9 + 7;
 
 // #define v.all v.begin(), v.end()
 
-#define printArrWhole(arr, n)                                                  \
-  for (ll i = 0; i < n; i++)                                                   \
-    cout << arr[i] << " ";                                                     \
+#define vout(v)                      \
+  for (auto x : v) cout << x << " "; \
   cout << endl;
 
 #define printArrLim(arr, in, n)                                                \
@@ -65,20 +64,11 @@ const ll mod = 1e9 + 7;
     cout << "YES";                                                             \
   cout << endl;
 
-#define printvcWhole(vc)                                                       \
-  for (auto x : vc)                                                            \
-    cout << x << " ";                                                          \
-  cout << endl;
-
 #define printvcLim(vc, in, n)                                                  \
   for (ll i = in; i <= n; i++)                                                 \
     cout << vc[i] << " ";                                                      \
   cout << endl;
 
-#define printdqWhole(dq)                                                       \
-  for (auto x : dq)                                                            \
-    cout << x << " ";                                                          \
-  cout << endl;
 
 #define printdqLim(dq, in, n)                                                  \
   for (ll i = in; i <= n; i++)                                                 \
