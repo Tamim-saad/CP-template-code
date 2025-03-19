@@ -24,7 +24,7 @@ typedef tree<int, null_type, less<int>, rb_tree_tag,
 
 typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
              tree_order_statistics_node_update>
-    indexed_multiset;
+    indexed_multiset;// non-decreasing order
 
 #define init                                                                   \
   ll count = 0, zz, t;                                                         \
