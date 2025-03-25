@@ -46,6 +46,12 @@ typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
 #define forrev(i, a, b) for (ll i = a; i >= b; i--)
 const ll mod = 1e9 + 7;
 
+ll myCeil(ll a, ll b) {
+  ll x = a / b;
+  if (b * x < a) return x + 1;
+  return x;
+}
+
 // #define v.all v.begin(), v.end()
 
 #define vout(v)                      \
