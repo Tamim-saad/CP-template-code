@@ -12,6 +12,41 @@ using namespace __gnu_pbds;
 #define ll long long
 #define ll unsigned long long
 
+
+// Function to read a __int128 from input
+__int128 read128() {
+  string s;
+  cin >> s;
+  __int128 x = 0;
+  for (char c : s) {
+    x = x * 10 + (c - '0');
+  }
+  return x;
+}
+
+// Function to print a __int128 to output
+void print128(__int128 x) {
+  if (x == 0) {
+    cout << 0;
+    return;
+  }
+  string s;
+  bool neg = false;
+  if (x < 0) {
+    neg = true;
+    x = -x;
+  }
+  while (x > 0) {
+    s += '0' + (x % 10);
+    x /= 10;
+  }
+  if (neg)
+    s += '-';
+  reverse(s.begin(), s.end());
+  cout << s;
+}
+
+
 const double PI = acos(-1.0);
 
 // template <typename Key, typename Mapped, typename Compare, typename Tag,
@@ -981,3 +1016,4 @@ int main() {
     // cout<<ans<<endl;
   }
 }
+
