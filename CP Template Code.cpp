@@ -13,6 +13,42 @@ using namespace __gnu_pbds;
 #define ll unsigned long long
 
 
+const double PI = acos(-1.0);
+
+// template <typename Key, typename Mapped, typename Compare, typename Tag,
+//           typename Policy>
+// class tree;
+
+typedef tree<int, null_type, less<int>, rb_tree_tag,
+             tree_order_statistics_node_update>
+    indexed_set;
+
+typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
+             tree_order_statistics_node_update>
+    indexed_multiset;// non-decreasing order
+
+#define init                                                                   \
+  ll count = 0, zz, t;                                                         \
+  cin >> t;                                                                    \
+  while (t--)
+#define ld long double
+#define ed "\n"
+#define eb emplace_back
+#define con continue
+#define bre break
+#define pl "  "
+#define pll " --- "
+#define size size()
+#define mpr make_pair
+#define vec vector<ll>
+#define lmax LONG_LONG_MAX
+#define lmin LONG_LONG_MIN
+#define forr(i, a, b) for (ll i = a; i < b; i++)
+#define forrev(i, a, b) for (ll i = a; i >= b; i--)
+const ll mod = 1e9 + 7;
+
+
+
 // Function to read a __int128 from input
 __int128 read128() {
   string s;
@@ -47,39 +83,7 @@ void print128(__int128 x) {
 }
 
 
-const double PI = acos(-1.0);
 
-// template <typename Key, typename Mapped, typename Compare, typename Tag,
-//           typename Policy>
-// class tree;
-
-typedef tree<int, null_type, less<int>, rb_tree_tag,
-             tree_order_statistics_node_update>
-    indexed_set;
-
-typedef tree<pair<ll, ll>, null_type, less<pair<ll, ll>>, rb_tree_tag,
-             tree_order_statistics_node_update>
-    indexed_multiset;// non-decreasing order
-
-#define init                                                                   \
-  ll count = 0, zz, t;                                                         \
-  cin >> t;                                                                    \
-  while (t--)
-#define ld long double
-#define ed "\n"
-#define eb emplace_back
-#define con continue
-#define bre break
-#define pl "  "
-#define pll " --- "
-#define size size()
-#define mpr make_pair
-#define vec vector<ll>
-#define lmax LONG_LONG_MAX
-#define lmin LONG_LONG_MIN
-#define forr(i, a, b) for (ll i = a; i < b; i++)
-#define forrev(i, a, b) for (ll i = a; i >= b; i--)
-const ll mod = 1e9 + 7;
 
 ll myCeil(ll a, ll b) {
   ll x = a / b;
@@ -1016,4 +1020,5 @@ int main() {
     // cout<<ans<<endl;
   }
 }
+
 
